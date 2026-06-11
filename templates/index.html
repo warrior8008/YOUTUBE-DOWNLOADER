@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YTGrab — YouTube Downloader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- Background grid -->
+  <div class="bg-grid"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">▶</span>
+      <span class="logo-text">YTGrab</span>
+    </div>
+    <span class="header-tag">powered by yt-dlp</span>
+  </header>
+
+  <!-- Hero -->
+  <main class="main">
+    <section class="hero">
+      <h1 class="hero-title">
+        Download YouTube<br/>
+        <span class="hero-accent">in Full Quality</span>
+      </h1>
+      <p class="hero-sub">Paste any YouTube link — pick your quality — get your file.</p>
+    </section>
+
+    <!-- URL Input -->
+    <section class="input-section">
+      <div class="url-bar">
+        <div class="url-icon">🔗</div>
+        <input
+          type="text"
+          id="urlInput"
+          class="url-input"
+          placeholder="https://www.youtube.com/watch?v=..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="fetch-btn" id="fetchBtn" onclick="fetchInfo()">
+          <span id="fetchBtnText">Fetch</span>
+        </button>
+      </div>
+      <div id="urlError" class="error-msg hidden"></div>
+    </section>
+
+    <!-- Video Info Card -->
+    <section id="videoCard" class="video-card hidden">
+      <div class="video-thumbnail-wrap">
+        <img id="videoThumb" class="video-thumb" src="" alt="thumbnail" />
+        <span id="videoDuration" class="duration-badge"></span>
+      </div>
+      <div class="video-meta">
+        <h2 id="videoTitle" class="video-title"></h2>
+        <div class="video-stats">
+          <span id="videoChannel" class="stat-chip channel-chip"></span>
+          <span id="videoViews" class="stat-chip"></span>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="modeVideo" onclick="setMode('video')">
+            🎬 Video
+          </button>
+          <button class="mode-btn" id="modeAudio" onclick="setMode('audio')">
+            🎵 MP3 Audio
+          </button>
+        </div>
+
+        <!-- Quality Selector -->
+        <div id="qualitySection">
+          <p class="quality-label">Select Quality</p>
+          <div class="quality-grid" id="qualityGrid"></div>
+        </div>
+
+        <!-- Download Button -->
+        <button class="download-btn" id="downloadBtn" onclick="startDownload()">
+          <span id="downloadBtnText">⬇ Download</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progressSection" class="progress-section hidden">
+      <div class="progress-card">
+        <div class="progress-header">
+          <span id="progressLabel">Downloading…</span>
+          <span id="progressPercent" class="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progressSpeed"></span>
+          <span id="progressETA"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Done Section -->
+    <section id="doneSection" class="done-section hidden">
+      <div class="done-card">
+        <div class="done-icon">✅</div>
+        <p class="done-title">Ready to save!</p>
+        <a id="downloadLink" class="save-btn" href="#" download>
+          💾 Save File
+        </a>
+        <button class="reset-btn" onclick="resetAll()">↩ Download Another</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>For personal use only · Respect copyright · <span class="mono">yt-dlp</span> backend</p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
